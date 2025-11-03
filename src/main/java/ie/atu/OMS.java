@@ -105,6 +105,7 @@ public class OMS {
                                 }
                             }
                             order.setPrice(newPrice);
+                            order.setTotalPrice(order.getPrice() * order.getQuantity());
                             break;
                         case "4":
                             int newQuantity = 0;
@@ -119,9 +120,11 @@ public class OMS {
                                 }
                             }
                             order.setQuantity(newQuantity);
+                            order.setTotalPrice(order.getPrice() * order.getQuantity());
                             break;
                         case "5":
                             System.out.println("Quit update");
+                            return;
                         default:
                             System.out.println("Invalid input");
                     }
@@ -136,7 +139,7 @@ public class OMS {
 
     public static void listOrders(ArrayList<Order> orders) {
         for (Order order : orders) {
-            order.toString();
+            System.out.println(order.toString());
         }
     }
 }
