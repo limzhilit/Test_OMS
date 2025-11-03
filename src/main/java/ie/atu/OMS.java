@@ -1,10 +1,35 @@
 package ie.atu;
 
+import java.lang.classfile.attribute.CodeAttribute;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OMS {
 
+    public static void main(String[] args) {
+
+        ArrayList<Order> orders = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+
+        while(true) {
+            System.out.println("Select action: \n1 Add Order\n2 Update Order\n3 List Order\n4 Quit");
+            String action = sc.nextLine();
+            switch (action) {
+                case "1":
+                    addOrder(orders);
+                    break;
+                case "2":
+                    updateOrder(orders);
+                    break;
+                case "3":
+                    listOrders(orders);
+                    break;
+                case "4":
+                    return;
+            }
+        }
+
+    }
     public static void addOrder(ArrayList<Order> orders) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter order ID: ");
