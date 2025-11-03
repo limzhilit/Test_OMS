@@ -44,12 +44,29 @@ public class OMS {
         String customerName = sc.nextLine().strip();
         System.out.println("Please enter product name: ");
         String productName = sc.nextLine().strip();
-        System.out.println("Please enter the price: ");
-        String priceString = sc.nextLine().strip();
-        double price = Double.parseDouble(priceString);
-        System.out.println("Please enter the quantity: ");
-        String quantityString = sc.nextLine().strip();
-        int quantity = Integer.parseInt(quantityString);
+        double price = 0;
+        while(true) {
+            System.out.println("Please enter the price: ");
+            String priceString = sc.nextLine().strip();
+            try {
+                price = Double.parseDouble(priceString);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Price is not a number");
+            }
+        }
+        int quantity = 0;
+        while(true) {
+            System.out.println("Please enter the quantity: ");
+            String quantityString = sc.nextLine().strip();
+            try {
+                quantity = Integer.parseInt(quantityString);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Quantity is not a number");
+            }
+        }
+
         Order order = new Order(orderId, customerName, productName, price, quantity);
         orders.add(order);
     }
@@ -76,15 +93,31 @@ public class OMS {
                             order.setProductName(newProductName);
                             break;
                         case "3":
-                            System.out.println("Current price = " + order.getPrice() + "\nNew data: ");
-                            String newPriceString = sc.nextLine().strip();
-                            double newPrice = Double.parseDouble(newPriceString);
+                            double newPrice = 0;
+                            while(true) {
+                                System.out.println("Current price = " + order.getPrice() + "\nNew data: ");
+                                String newPriceString = sc.nextLine().strip();
+                                try {
+                                    newPrice = Double.parseDouble(newPriceString);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Price is not a number");
+                                }
+                            }
                             order.setPrice(newPrice);
                             break;
                         case "4":
-                            System.out.println("Current quantity = " + order.getQuantity() + "\nNew data: ");
-                            String newQuantityString = sc.nextLine().strip();
-                            int newQuantity = Integer.parseInt(newQuantityString);
+                            int newQuantity = 0;
+                            while(true) {
+                                System.out.println("Current quantity = " + order.getQuantity() + "\nNew data: ");
+                                String newQuantityString = sc.nextLine().strip();
+                                try {
+                                    newQuantity = Integer.parseInt(newQuantityString);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Price is not a number");
+                                }
+                            }
                             order.setQuantity(newQuantity);
                             break;
                         case "5":
